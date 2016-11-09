@@ -13,6 +13,7 @@ Mike Recommends allows you to ask for a suggestion based on something you have l
 ![Edit index.js](http://standupguy.co.uk/api-keys.jpg)
 - Zip the alexaSkill.js and index.js files and upload as your Lambda function package and save it.
 - Use the included SpeechAssets folder to set up your interaction model.
+![Edit index.js](http://standupguy.co.uk/interaction-model.png)
 - Once everything is saved that is you set up.
 
 #Example Usage
