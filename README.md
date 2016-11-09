@@ -7,7 +7,7 @@ Mike Recommends allows you to ask for a suggestion based on something you have l
 #Installation
 - Create a Lambda function with an Alexa Skills Kit event source [(tutorial here)](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/deploying-a-sample-skill-to-aws-lambda#Creating%20the%20Lambda%20Function%20for%20the%20Sample)
 - Create a new Alexa Skill with the Lambda ARN (Amazon Resource Name) generated from the step prior [(tutorial here)](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/registering-and-managing-alexa-skills-in-the-developer-portal)
-- Register on TasteKid and get your own API key.
+- Register on [TasteKid](http://tastekid.com) and get your own API key.
 - Take a copy of Mike Recommends from the github repo.
 - Edit the index.js file to include your APP ID and TasteKid API key.
 ![Edit index.js](http://standupguy.co.uk/api-keys.jpg)
