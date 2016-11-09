@@ -1,4 +1,4 @@
-# Mike-Recommends
+# Mike Recommends
 Alexa Skill for recommending movies, books, tv shows, games and even bands based on one that you love
 
 Watching a good TV show or movie is great but once it ends your left looking for something else to watch, when searching for some new shows to watch online I came across the TasteKid website which recommends shows based on what the community has also liked. I thought it would be cool to implement TasteKid's API in a skill for Alexa.
