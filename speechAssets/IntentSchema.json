@@ -1,0 +1,29 @@
+{
+  "intents": [
+    {
+      "intent": "getRecommendationsIntent",
+      "slots": [
+        {
+          "name": "type",
+          "type": "TYPES"
+        },
+        {
+          "name": "title",
+          "type": "TITLES"
+        }
+      ]
+    },
+    {
+      "intent": "getMoreInfoIntent",
+      "slots": [
+        {
+          "name": "title",
+          "type": "TITLES"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    }
+  ]
+}

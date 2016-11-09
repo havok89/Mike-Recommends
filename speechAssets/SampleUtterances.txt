@@ -1,0 +1,25 @@
+getRecommendationsIntent for a {type} similar to {title}
+getRecommendationsIntent for a {type} kind of like {title}
+getRecommendationsIntent to suggest a {type} similar to {title}
+getRecommendationsIntent to suggest a {type} kind of like {title}
+getRecommendationsIntent to give me a {type} similar to {title}
+getRecommendationsIntent to give me a {type} kind of like {title}
+getRecommendationsIntent suggest a {type} similar to {title}
+getRecommendationsIntent suggest a {type} kind of like {title}
+getRecommendationsIntent give me a {type} similar to {title}
+getRecommendationsIntent give me a {type} kind of like {title}
+getRecommendationsIntent tell me a {type} similar to {title}
+getRecommendationsIntent tell me a {type} kind of like {title}
+getRecommendationsIntent what is a {type} like {title}
+
+getMoreInfoIntent what is {title} about
+getMoreInfoIntent what {title} is about
+getMoreInfoIntent tell me more about {title}
+getMoreInfoIntent tell me about {title}
+getMoreInfoIntent give me more info on {title}
+getMoreInfoIntent {title}
+
+AMAZON.StopIntent none
+AMAZON.StopIntent neither
+AMAZON.StopIntent none thanks
+AMAZON.StopIntent none thank you
