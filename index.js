@@ -65,7 +65,7 @@ function getWelcomeResponse(response) {
         type: AlexaSkill.speechOutputType.SSML
     };
     var repromptOutput = {
-        speech: "<speak>" + repromptText + "</speak>",
+        speech: repromptText,
         type: AlexaSkill.speechOutputType.PLAIN_TEXT
 };
     response.ask(speechOutput, repromptOutput);
@@ -101,7 +101,7 @@ function getRecommendations(intent, session, response){
             type: AlexaSkill.speechOutputType.SSML
         };
         var repromptOutput = {
-            speech: "<speak>" + repromptText + "</speak>",
+            speech: repromptText,
             type: AlexaSkill.speechOutputType.PLAIN_TEXT
         };
         response.ask(speechOutput, repromptOutput);
@@ -129,7 +129,7 @@ function getMoreInfo(intent, session, response){
         } else {
             var repromptText = "Ask if you would like to hear more about one of the recommendations, for example: Tell me more about The Matrix.";
             var repromptOutput = {
-                speech: "<speak>" + repromptText + "</speak>",
+                speech: repromptText,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
             response.ask(speechOutput, repromptOutput);
