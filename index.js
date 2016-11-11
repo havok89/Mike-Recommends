@@ -44,14 +44,6 @@ MikeRecommends.prototype.intentHandlers = {
     "getMoreInfoIntent": function (intent, session, response) {
         getMoreInfo(intent, session, response);
     },
-    "AMAZON.HelpIntent": function (intent, session, response) {
-        var speechText = "You can ask for a book, show, game, band or movie recommendation based on something you like. for example: suggest a movie similar to Equilibrium.";
-        var speechOutput = {
-            speech: "<speak>" + speechText + "</speak>",
-            type: AlexaSkill.speechOutputType.SSML
-        };
-        response.ask(speechOutput, speechOutput);
-    },
     "AMAZON.StopIntent": function (intent, session, response) {
         var speechText = "OK, Enjoy!";
         var speechOutput = {
@@ -59,15 +51,7 @@ MikeRecommends.prototype.intentHandlers = {
             type: AlexaSkill.speechOutputType.SSML
         };
         response.tell(speechOutput);
-    },
-    "AMAZON.CancelIntent": function (intent, session, response) {
-        var speechText = "OK, Enjoy!";
-        var speechOutput = {
-            speech: "<speak>" + speechText + "</speak>",
-            type: AlexaSkill.speechOutputType.SSML
-        };
-        response.tell(speechOutput);
-}
+    }
 };
 
 var sessionAttributes = {};
@@ -81,7 +65,7 @@ function getWelcomeResponse(response) {
         type: AlexaSkill.speechOutputType.SSML
     };
     var repromptOutput = {
-        speech: repromptText,
+        speech: "<speak>" + repromptText + "</speak>",
         type: AlexaSkill.speechOutputType.PLAIN_TEXT
 };
     response.ask(speechOutput, repromptOutput);
@@ -99,8 +83,7 @@ function getRecommendations(intent, session, response){
         var i;
         var results = recommendations.Similar.Results;
         if (recommendations.length == 0) {
-            speechText = "There is a problem connecting to Tastekid just now. Please try again later.";
-            response.tell(speechText);
+            speechText = "There was a problem with the response from Tastekid. Please ask again";
         } else {
             for (i = 0; i < paginationSize; i++) {
                 if (i==(paginationSize-1)){
@@ -111,34 +94,46 @@ function getRecommendations(intent, session, response){
                     speechText = speechText + ", ";
                 }
             }
-            var speechOutput = {
-                speech: "<speak>" + speechText + ". Which one would you like to know more about?</speak>",
-                type: AlexaSkill.speechOutputType.SSML
-            };
-            var repromptOutput = {
-                speech: repromptText,
-                type: AlexaSkill.speechOutputType.PLAIN_TEXT
-            };
-            response.ask(speechOutput, repromptOutput);
+            speechText = speechText + ". Which one would you like to know more about?"
         }
+        var speechOutput = {
+            speech: "<speak>" + speechText + "</speak>",
+            type: AlexaSkill.speechOutputType.SSML
+        };
+        var repromptOutput = {
+            speech: "<speak>" + repromptText + "</speak>",
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        response.ask(speechOutput, repromptOutput);
     });
 }
 
 function getMoreInfo(intent, session, response){
     requestType = session.attributes.type;
     requestTitle = intent.slots.title.value;
+    var complete = false;
     getJSONRecommendationsFromTasteKid(requestType,requestTitle, function (recommendations) {
         var teaser = recommendations.Similar.Info[0].wTeaser;
         if (typeof teaser !== 'undefined' && teaser !== null){
             speechText = teaser;
+            complete = true;
         } else {
-            speechText = "There is a problem connecting to Tastekid at this time. Please try again later.";
+            speechText = "There was a problem with the response from Tastekid. Please ask again";
         }
         var speechOutput = {
             speech: "<speak>" + speechText + "</speak>",
             type: AlexaSkill.speechOutputType.SSML
         };
-        response.tell(speechOutput);
+        if(complete){
+            response.tell(speechOutput);
+        } else {
+            var repromptText = "Ask if you would like to hear more about one of the recommendations, for example: Tell me more about The Matrix.";
+            var repromptOutput = {
+                speech: "<speak>" + repromptText + "</speak>",
+                type: AlexaSkill.speechOutputType.PLAIN_TEXT
+            };
+            response.ask(speechOutput, repromptOutput);
+        }
     });
 }
 
